@@ -1,0 +1,18 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "/";
+message Request {
+  string name = 1;
+  string addr = 2;
+  map<string,string> test = 3;
+}
+
+message Reply {
+  string msg = 1;
+  int32 code = 2;
+}
+
+service TestService {
+  rpc Query(Request) returns(Reply);
+}
