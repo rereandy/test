@@ -3,7 +3,7 @@
 package main
 
 import (
-	"github.com/rereandy/model-gen/db"
+	"github.com/rereandy/db"
 )
 
 type tAdUgYybTypeInfoModel interface {
@@ -23,7 +23,7 @@ const (
 )
 
 type TAdUgYybTypeInfoImpl struct {
-	Connection *db.Connection `inject:"test"`
+	Connection *db.Connection
 }
 
 func (e *TAdUgYybTypeInfoEntity) set(k string, v interface{}) {
