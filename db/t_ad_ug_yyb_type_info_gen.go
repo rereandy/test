@@ -23,7 +23,8 @@ const (
 )
 
 type TAdUgYybTypeInfoImpl struct {
-	Connection *db.Connection
+	// 不要注入时，可删除后面的 `inject:"test"`
+	Connection *db.Connection `inject:"test"`
 }
 
 func (e *TAdUgYybTypeInfoEntity) set(k string, v interface{}) {
@@ -68,17 +69,17 @@ var columnsTAdUgYybTypeInfo = columnsTAdUgYybTypeInfoType{
 	Type:     "type",
 }
 
-func (e *TAdUgYybTypeInfoImpl) Insert(entity *TAdUgYybTypeInfoEntity) int64 {
+func (e *TAdUgYybTypeInfoImpl) Insert(entity *TAdUgYybTypeInfoEntity) (lastID int64, err error) {
 	session := e.Connection.NewSession()
 	r, err := session.InsertInto(tableTAdUgYybTypeInfo).
 		Columns(columnsTAdUgYybTypeInfoFields...).
 		Record(entity).Exec()
 	if err != nil {
-		panic(err)
+		return 0, err
 	}
 	n, err := r.RowsAffected()
 	if err != nil {
-		panic(err)
+		return 0, err
 	}
-	return n
+	return n, nil
 }

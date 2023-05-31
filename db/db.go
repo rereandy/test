@@ -5,11 +5,6 @@ import (
 	"github.com/rereandy/db"
 )
 
-type TypeInfo struct {
-	Material string `db:"material"`
-	Type     string `db:"type"`
-}
-
 func main() {
 	options := &db.Options{
 		UserName: "root",
@@ -19,11 +14,17 @@ func main() {
 		DBName:   "test",
 	}
 	conn := db.Open(options)
-	ss := conn.NewSession()
-	var values []*TypeInfo
-	_, err := ss.Select("material,type").From("t_ad_ug_yyb_type_info").Load(&values)
+	typeImpl := TAdUgYybTypeInfoImpl{
+		Connection: conn,
+	}
+	data, _ := typeImpl.Select()
+	fmt.Println(data[0].Material)
+	ent := &TAdUgYybTypeInfoEntity{
+		Material: "王者荣耀",
+		Type:     "游戏",
+	}
+	_, err := typeImpl.Insert(ent)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(values[0].Type)
 }
