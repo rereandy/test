@@ -1,0 +1,7 @@
+{"level":"WARN","time":"2023-06-01 12:55:33.866","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:55:38.872","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:55:43.874","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:55:48.878","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:55:53.882","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:55:58.885","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}
+{"level":"WARN","time":"2023-06-01 12:56:03.888","caller":"zaplog@v1.1.5/zaplog.go:32","message":"test warn log"}

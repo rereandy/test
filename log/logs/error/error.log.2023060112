@@ -1,0 +1,5 @@
+{"level":"ERROR","time":"2023-06-01 12:55:35.868","caller":"zaplog@v1.1.5/zaplog.go:37","message":"test error log"}
+{"level":"ERROR","time":"2023-06-01 12:55:42.874","caller":"zaplog@v1.1.5/zaplog.go:37","message":"test error log"}
+{"level":"ERROR","time":"2023-06-01 12:55:49.879","caller":"zaplog@v1.1.5/zaplog.go:37","message":"test error log"}
+{"level":"ERROR","time":"2023-06-01 12:55:56.884","caller":"zaplog@v1.1.5/zaplog.go:37","message":"test error log"}
+{"level":"ERROR","time":"2023-06-01 12:56:03.888","caller":"zaplog@v1.1.5/zaplog.go:37","message":"test error log"}
