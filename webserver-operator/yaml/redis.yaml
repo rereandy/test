@@ -1,0 +1,11 @@
+apiVersion: testapp.github.com/v1
+kind: Redis
+metadata:
+  name: nginx-app
+spec:
+  replicas: 4
+  image: nginx:alpine
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30002
