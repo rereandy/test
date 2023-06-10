@@ -90,7 +90,11 @@ func (r *RedisReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 			return ctrl.Result{}, err
 		}
 		fmt.Println("r.Client.Create Service success")
-
+		// 学习 Finalizers，OwnerReference
+		/*redis.Finalizers = append(redis.Finalizers, deployment.Name)
+		if err := r.Client.Update(ctx, redis); err != nil {
+			return ctrl.Result{}, err
+		}*/
 	} else {
 		oldSpec := &testappv1.Redis{}
 		if err := json.Unmarshal([]byte(redis.Annotations["spec"]), oldSpec); err != nil {
