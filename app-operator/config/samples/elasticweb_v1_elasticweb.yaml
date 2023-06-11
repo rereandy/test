@@ -1,0 +1,12 @@
+apiVersion: elasticweb.example.com/v1
+kind: ElasticWeb
+metadata:
+  labels:
+    app.kubernetes.io/name: elasticweb
+    app.kubernetes.io/instance: elasticweb-sample
+    app.kubernetes.io/part-of: app-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: app-operator
+  name: elasticweb-sample
+spec:
+  # TODO(user): Add fields here

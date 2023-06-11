@@ -44,6 +44,8 @@ type RedisReconciler struct {
 //+kubebuilder:rbac:groups=testapp.github.com,resources=redis,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=testapp.github.com,resources=redis/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=testapp.github.com,resources=redis/finalizers,verbs=update
+// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;update;patch;delete
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -199,8 +201,8 @@ func newDeployment(app *testappv1.Redis) *appsv1.Deployment {
 func newService(app *testappv1.Redis) *corev1.Service {
 	return &corev1.Service{
 		TypeMeta: metav1.TypeMeta{
-			Kind:       "Service",
 			APIVersion: "v1",
+			Kind:       "Service",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      app.Name,
@@ -214,8 +216,13 @@ func newService(app *testappv1.Redis) *corev1.Service {
 			},
 		},
 		Spec: corev1.ServiceSpec{
-			Type:  corev1.ServiceTypeNodePort,
-			Ports: app.Spec.Ports,
+			Type: corev1.ServiceTypeNodePort,
+			// Ports: app.Spec.Ports,
+			Ports: []corev1.ServicePort{{
+				Name:     "http",
+				Port:     app.Spec.Ports[0].TargetPort.IntVal,
+				NodePort: app.Spec.Ports[0].NodePort,
+			}},
 			Selector: map[string]string{
 				"app": app.Name,
 			},

@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- elasticweb_v1_elasticweb.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

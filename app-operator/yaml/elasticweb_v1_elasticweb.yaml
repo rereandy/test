@@ -1,0 +1,10 @@
+apiVersion: elasticweb.example.com/v1
+kind: ElasticWeb
+metadata:
+  name: elasticweb-sample
+  namespace: dev
+spec:
+  image: nginx:1.17.1  # 镜像
+  port: 30003          # 外部访问的端口
+  singlePodsQPS: 800   # 单个 Pod 的 QPS
+  totalQPS: 2400       # 总 QPS
