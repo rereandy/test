@@ -65,13 +65,13 @@ func (r *ElasticWebReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 				return ctrl.Result{}, nil
 			}
 
-			// 创建service
-			if err = CreateServiceIfNotExists(ctx, r, instance, req); err != nil {
+			// 创建Deploy
+			if err := CreateDeployment(ctx, r, instance); err != nil {
 				return ctrl.Result{}, err
 			}
 
-			// 创建Deploy
-			if err := CreateDeployment(ctx, r, instance); err != nil {
+			// 创建service
+			if err = CreateServiceIfNotExists(ctx, r, instance, req); err != nil {
 				return ctrl.Result{}, err
 			}
 
