@@ -53,7 +53,7 @@ func (r *ElasticWebReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 
 	logger.Info(fmt.Sprintf("instance:%s", instance.String()))
 
-	// 获取deployment
+	// 获取deployment，pod删除的时候，相关的deployment,service自动删除
 	deploy := &appsv1.Deployment{}
 	if err := r.Get(ctx, req.NamespacedName, deploy); err != nil {
 		if errors.IsNotFound(err) {
