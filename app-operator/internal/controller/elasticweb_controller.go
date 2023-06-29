@@ -45,7 +45,7 @@ type ElasticWebReconciler struct {
 func (r *ElasticWebReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	logger := log.FromContext(ctx)
 
-	// 相关接口都是传入这个参数当作 object
+	// 相关接口传入这个参数当作 object,获取成员数据或整体传入
 	instance := &elasticwebv1.ElasticWeb{}
 
 	if err := r.Get(ctx, req.NamespacedName, instance); err != nil {
